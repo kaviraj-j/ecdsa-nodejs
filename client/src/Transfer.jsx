@@ -6,11 +6,6 @@ import { toHex, utf8ToBytes } from "ethereum-cryptography/utils";
 
 
 
-function hashMessage(message) {
-  const bytes = utf8ToBytes(message);
-  return keccak256(bytes);
-}
-
 
 
 function Transfer({ address, setBalance, privateKey }) {
