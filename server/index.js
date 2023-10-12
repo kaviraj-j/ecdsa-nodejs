@@ -1,7 +1,13 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
 const port = 3042;
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// parse application/json
+app.use(bodyParser.json());
 
 app.use(cors());
 app.use(express.json());
@@ -9,7 +15,6 @@ app.use(express.json());
 const balances = {
   "0x1": 100,
   "0x2": 50,
-  "0x3": 75,
 };
 
 app.get("/balance/:address", (req, res) => {
@@ -31,6 +36,17 @@ app.post("/send", (req, res) => {
     balances[recipient] += amount;
     res.send({ balance: balances[sender] });
   }
+});
+
+app.post("/new", async (req, res) => {
+  const { newPublicKey } = req.body;
+  // balances[newPublicKey] = 100;
+  console.log("public key: " + newPublicKey);
+  balances[newPublicKey] = 100;
+
+  res.send({ balances });
+
+  console.log(balances);
 });
 
 app.listen(port, () => {
