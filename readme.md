@@ -18,6 +18,7 @@ The client folder contains a [react app](https://reactjs.org/) using [vite](http
 2. Run `npm install` to install all the depedencies
 3. Run `npm run dev` to start the application 
 4. Now you should be able to visit the app at http://127.0.0.1:5173/
+5. Note: If you're on development environment then change the base url in src/server.js to localhost"
 
 ### Server
 
